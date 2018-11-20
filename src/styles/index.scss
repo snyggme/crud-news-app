@@ -89,20 +89,56 @@ body {
 	}
 }
 
-@media screen and (max-width: 650px) {
-	main {
-		padding-top: 10px;
-		font-size: 35px;
+div.main-wrapper {
+	padding-top: 65px;
+}
 
-		h1 {
-			font-size: 55px;
+main {
+	margin-top: 380px;
+	max-width: 1200px;
+	margin: 0 auto;
+	color: white;
+	display: flex;
+	align-items: center;
+	background: #746396;
+
+	div {
+		padding: 50px 80px;
+		flex: 1 1 100%;
+	}
+
+	img {
+		width: 250px;
+		margin-left: 60px;
+	}
+
+	div.intro {
+		font-size: 40px;
+		font-weight: 500; 
+
+		p.small {
+			font-size: 20px;
+			font-weight: 300;
 		}
 
-		.coffee-cup {
-			width: 300px;
-			height: 300px;
-			top: 50%;
-			left: 15%;
+		button {
+			background: white;
+			font-size: 20px;
+			border: none;
+			color: $maintheme;
+			padding: 5px 30px;
+			margin-top: 30px;
+			border-radius: 4px;
+			outline: none;
+
+			&:hover {
+				color: white;
+				background-color: $maintheme;
+			}
 		}
 	}
+}
+
+@media screen and (max-width: 650px) {
+
 }
