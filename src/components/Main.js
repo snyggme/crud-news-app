@@ -1,16 +1,27 @@
-import React from 'react';
-import MainContent from './MainContent'
-import PopularArticles from './PopularArticles'
-import EditorsArticles from './EditorsArticles'
+import React, { Component } from 'react';
+import MainContent from './MainContent';
+import PopularArticles from './PopularArticles';
+import EditorsArticles from './EditorsArticles';
 
-const Main = () => {
-	return (
-		<main className='main-wrapper'>
-			<MainContent />
-			<PopularArticles />
-			<EditorsArticles />
-		</main>
-	)
+class Main extends Component {
+	componentDidMount() {
+		// this.props.getFeeds();
+	}
+	render() {
+		const { isLoading } = this.props;
+
+		if (isLoading)
+			return <div className='loading' />
+
+		return (
+			<main className='main-wrapper'>
+				<MainContent />
+				<PopularArticles />
+				<EditorsArticles />
+			</main>
+		)	
+	}
+	
 }
 
 export default Main;

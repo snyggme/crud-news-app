@@ -33,7 +33,7 @@ class Article extends Component {
 					</p>
 				</div>
 				{ full &&
-					<img src={this.props.src} alt='article image' />
+					<img src={this.props.src} alt=' ' />
 				}
 			</article>
 		)	

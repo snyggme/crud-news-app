@@ -48,7 +48,7 @@ class NewsSearch extends Component {
 						}}
 						type='search' 
 						placeholder='Search News'
-						required='true'
+						required={true}
 					/>
 				</label>
 			</li>

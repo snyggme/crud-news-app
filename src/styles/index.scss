@@ -237,11 +237,32 @@ footer {
 		margin-bottom: 15px;
 		margin-top: 15px;
 
-		span {
+		span.author {
 			color: black;
 			font-style: italic;
 		}
 	}
+}
+
+.loading {
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 10px solid white;
+    border-top: 10px solid $maintheme;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.5s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media screen and (max-width: 650px) {

@@ -19,6 +19,6 @@ const Root = ({ store }) => (
 )
 
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 
 serviceWorker.unregister();

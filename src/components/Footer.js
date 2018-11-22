@@ -4,7 +4,12 @@ const Footer = () => {
 	return (
 		<footer>
 			<hr />
-			<p>made with 💜 by <span>snygg</span></p>
+			<p>
+				made with 
+				<span role="img" aria-label='purple heart'>💜</span>
+				by 
+				<span className='author'>snygg</span>
+			</p>
 		</footer>
 	)
 }

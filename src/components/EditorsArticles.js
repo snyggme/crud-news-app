@@ -1,6 +1,6 @@
 import React from 'react';
 import Article from './Article';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const articles = [
 	'https://picsum.photos/200/150?image=301', 
