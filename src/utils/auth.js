@@ -4,14 +4,14 @@ class Auth {
         auth2.signIn().then(googleUser => {
         
             const profile = googleUser.getBasicProfile()
-            console.log('Full Name: ' + profile.getName())
-            console.log('Given Name: ' + profile.getGivenName())
-            console.log('Family Name: ' + profile.getFamilyName())
-            console.log('Image URL: ' + profile.getImageUrl())
-            console.log('Email: ' + profile.getEmail())
+            // console.log('Full Name: ' + profile.getName())
+            // console.log('Given Name: ' + profile.getGivenName())
+            // console.log('Family Name: ' + profile.getFamilyName())
+            // console.log('Image URL: ' + profile.getImageUrl())
+            // console.log('Email: ' + profile.getEmail())
 
             const id_token = googleUser.getAuthResponse().id_token
-            console.log('ID Token: ' + id_token)
+            // console.log('ID Token: ' + id_token)
 
             localStorage.setItem('token', id_token);
         })

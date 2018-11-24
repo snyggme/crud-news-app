@@ -6,9 +6,9 @@ const Footer = () => {
 			<hr />
 			<p>
 				made with 
-				<span role="img" aria-label='purple heart'>💜</span>
+				<span role="img" aria-label='purple heart'> 💜 </span>
 				by 
-				<span className='author'>snygg</span>
+				<span className='author'> snygg</span>
 			</p>
 		</footer>
 	)

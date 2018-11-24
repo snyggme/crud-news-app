@@ -9,8 +9,14 @@ import Footer from './components/Footer';
 
 import { getFeeds } from './actions/FeedsAction';
 import auth from './utils/auth';
+import { authWithGoogle } from './utils/network';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
     componentDidMount() {
         const _onInit = auth2 => {
             console.log('init OK', auth2)
@@ -26,10 +32,14 @@ class App extends Component {
                 .then(_onInit, _onError)
         })
     }
+    handleClick(e) {
+        auth.signIn()
+        authWithGoogle(auth.getToken())
+    }
     render() {
         return (
           <div>
-          <button onClick={auth.signIn}>Log in</button>
+          <button onClick={this.handleClick}>Log in</button>
           <button onClick={auth.signOut}>Log out</button>
             	<Navbar />
                 <Switch>
