@@ -19,7 +19,7 @@ class App extends Component {
     }
     componentDidMount() {
         const _onInit = auth2 => {
-            console.log('init OK', auth2)
+            console.log('init OK')
         }
         const _onError = err => {
             console.log('error', err)
@@ -33,8 +33,7 @@ class App extends Component {
         })
     }
     handleClick(e) {
-        auth.signIn()
-        authWithGoogle(auth.getToken())
+        auth.signIn(authWithGoogle)
     }
     render() {
         return (

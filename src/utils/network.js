@@ -39,9 +39,9 @@ export const authWithGoogle = async (data) => {
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Access-Control-Allow-Headers': 'x-access-token',
-                "x-access-token": {token: data}
-            }
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({token: data})
         });
 
         if (response.ok) {
