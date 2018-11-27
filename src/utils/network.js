@@ -2,6 +2,10 @@ import {
     GET_FEEDS_SUCCESS,
     GET_FEEDS_FAIL
 } from '../actions/FeedsAction';
+import {
+    GOOGLE_LOGIN_SUCCESS,
+    GOOGLE_LOGIN_FAIL
+} from '../actions/AuthAction';
 
 export let cachedFeeds = false;
 
@@ -32,41 +36,36 @@ export const httpGetFeeds = async (dispatch) => {
     }
 }
 
-export const authWithGoogle = async (data) => {  
+export const getBackendToken = async (dispatch, data) => {  
      try {
-        console.log(data)
         const response = await fetch(`${API_ROOT}/auth/google`, {  
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({token: data})
+            body: JSON.stringify({ token: data })
         });
 
         if (response.ok) {
             const json = await response.json();
-            console.log(json)
-                // dispatch({
-                //     type: POST_LOGIN_SUCCESS,
-                //     payload: json.data.id
 
-                // dispatch({
-                //     type: POST_LOGIN_FAIL,
-                //     error: true,
-                //     payload: json.message
-                // })
+            dispatch({
+                type: GOOGLE_LOGIN_SUCCESS,
+                payload: json.token
+            })
         } else {
-            console.log(response.statusText);
+            dispatch({
+                type: GOOGLE_LOGIN_FAIL,
+                error: true,
+                payload: response.statusText
+            })
         }
     } catch (e) {
-        console.log(e);
-        // form.reset();
-
-        // dispatch({
-        //     type: POST_LOGIN_FAIL,
-        //     error: true,
-        //     payload: new Error(e).message
-        // })
+        dispatch({
+            type: GOOGLE_LOGIN_FAIL,
+            error: true,
+            payload: new Error(e).message
+        })
     }
 }

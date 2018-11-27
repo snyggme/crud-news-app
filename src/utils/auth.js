@@ -1,39 +1,74 @@
 class Auth {
-  signIn(callback) {
-    const auth2 = window.gapi.auth2.getAuthInstance()
+    init() {
+        const _onInit = auth2 => {
+            console.log('init OK')
+        }
 
-    auth2.signIn().then(googleUser => {
-        
-        const profile = googleUser.getBasicProfile()
-        // console.log('Full Name: ' + profile.getName())
-        // console.log('Given Name: ' + profile.getGivenName())
-        // console.log('Family Name: ' + profile.getFamilyName())
-        // console.log('Image URL: ' + profile.getImageUrl())
-        // console.log('Email: ' + profile.getEmail())
+        const _onError = err => {
+            console.log('error', err)
+        }
 
-        const id_token = googleUser.getAuthResponse().id_token
-         // console.log('ID Token: ' + id_token)
+        window.gapi.load('auth2', function() {
+            window.gapi.auth2
+                .init({ 
+                    client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+                })
+                .then(_onInit, _onError)
+        })
+    }
+    signIn() {
+        return new Promise((resolve, reject) => {
+            const auth2 = window.gapi.auth2.getAuthInstance();
 
-        localStorage.setItem('token', id_token);
+            auth2.signIn()
+                .then(googleUser => {
+                    const profile = googleUser.getBasicProfile();
+                    const googleToken = googleUser.getAuthResponse().id_token;
+                    const username = profile.getGivenName();
 
-        callback(id_token);
-    })
-  }
-  signOut() {
+                    const user = {
+                        googleToken,
+                        username
+                    };
+
+                    sessionStorage.setItem('user', JSON.stringify(user));
+                    
+                    resolve(googleToken);
+                })
+        })
+    }
+    signOut() {
         const auth2 = window.gapi.auth2.getAuthInstance()
 
-        auth2.signOut().then(function() {
-            console.log('User signed out.')
-        })
+        auth2.signOut();
         
-        delete localStorage['token'];
-  }
-  isSigned() {
-        return localStorage.getItem('token') !== null
-  }
-  getToken() {
-        return localStorage.getItem('token');
-  }
+        delete sessionStorage['user'];
+    }
+    isSigned() {
+        return sessionStorage.getItem('user') !== null
+    }
+    getUsername() {
+        const { username } = JSON.parse(sessionStorage.getItem('user'));
+        
+        return username;
+    }
+    getGoogleToken() {
+        const user = JSON.parse(sessionStorage.getItem('user'));
+
+        return user.googleToken;
+    }
+    getBackendToken() {
+        const user = JSON.parse(sessionStorage.getItem('user'));
+        
+        return user.backendToken;
+    }
+    setBackendToken(backendToken) {
+        let user = JSON.parse(sessionStorage.getItem('user'));
+
+        user = { ...user, backendToken };
+        
+        sessionStorage.setItem('user', JSON.stringify(user));
+    }
 }
 
 export default new Auth();

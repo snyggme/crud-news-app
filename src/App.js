@@ -8,39 +8,17 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 
 import { getFeeds } from './actions/FeedsAction';
+import { googleLogin, googleLogout } from './actions/AuthAction';
 import auth from './utils/auth';
-import { authWithGoogle } from './utils/network';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleClick = this.handleClick.bind(this);
-    }
     componentDidMount() {
-        const _onInit = auth2 => {
-            console.log('init OK')
-        }
-        const _onError = err => {
-            console.log('error', err)
-        }
-        window.gapi.load('auth2', function() {
-            window.gapi.auth2
-                .init({ 
-                    client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-                })
-                .then(_onInit, _onError)
-        })
-    }
-    handleClick(e) {
-        auth.signIn(authWithGoogle)
+        auth.init();
     }
     render() {
         return (
-          <div>
-          <button onClick={this.handleClick}>Log in</button>
-          <button onClick={auth.signOut}>Log out</button>
-            	<Navbar />
+            <div>
+            	<Navbar {...this.props} />
                 <Switch>
                     <Route exact path='/' render={ renderProps =>
                         <Main {...this.props} {...renderProps }/>
@@ -48,20 +26,23 @@ class App extends Component {
                     <Route path='/news' component={News} />
                 </Switch>
                 <Footer />
-          </div>
+            </div>
         );
   }
 }
 
 const mapStateToProps = store => {
     return {
-        feeds: store.feeds
+        feeds: store.feeds,
+        auth: store.auth
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getFeeds: () => dispatch(getFeeds())
+        getFeeds: () => dispatch(getFeeds()),
+        googleLogin: () => dispatch(googleLogin()),
+        googleLogout: () => dispatch(googleLogout())
     }
 }
 
