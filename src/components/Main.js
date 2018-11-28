@@ -13,9 +13,15 @@ class Main extends Component {
 		if (isLoading)
 			return <div className='loading' />
 
+		const feed = {
+			title: 'fresh title',
+			content: 'fresh content'
+		};
+
 		return (
 			<main className='main-wrapper'>
 				<MainContent />
+				<button onClick={this.props.createFeed.bind(null, feed)}>create feed</button>
 				<PopularArticles />
 				<EditorsArticles />
 			</main>

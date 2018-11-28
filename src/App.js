@@ -7,7 +7,7 @@ import News from './components/News';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
-import { getFeeds } from './actions/FeedsAction';
+import { getFeeds, createFeed } from './actions/FeedsAction';
 import { googleLogin, googleLogout } from './actions/AuthAction';
 import auth from './utils/auth';
 
@@ -42,7 +42,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getFeeds: () => dispatch(getFeeds()),
         googleLogin: () => dispatch(googleLogin()),
-        googleLogout: () => dispatch(googleLogout())
+        googleLogout: () => dispatch(googleLogout()),
+        createFeed: (feed) => dispatch(createFeed(feed))
     }
 }
 

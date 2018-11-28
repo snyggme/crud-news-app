@@ -1,11 +1,14 @@
 import { 
     GET_FEEDS_SUCCESS,
-    GET_FEEDS_FAIL
+    GET_FEEDS_FAIL,
+    POST_FEED_SUCCESS,
+    POST_FEED_FAIL
 } from '../actions/FeedsAction';
 import {
     GOOGLE_LOGIN_SUCCESS,
     GOOGLE_LOGIN_FAIL
 } from '../actions/AuthAction';
+import auth from './auth';
 
 export let cachedFeeds = false;
 
@@ -36,11 +39,42 @@ export const httpGetFeeds = async (dispatch) => {
     }
 }
 
-export const getBackendToken = async (dispatch, data) => {  
-     try {
-        const response = await fetch(`${API_ROOT}/auth/google`, {  
+export const httpPostFeed = async (dispatch, feed) => {
+    try {
+        const response = await fetch(`${API_ROOT}/feeds`, {  
             method: 'POST',
             mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': auth.getBackendToken()
+            },
+            body: JSON.stringify(feed)
+        });
+
+        if (response.ok) {
+            const json = await response.json();
+
+            dispatch({
+                type: POST_FEED_SUCCESS,
+                payload: json.feed
+            })
+        } else {
+            throw new Error(response.status);            
+        }
+    } catch (e) {
+        dispatch({
+            type: POST_FEED_FAIL,
+            error: true,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const getBackendToken = async (dispatch, data) => {  
+    try {
+        const response = await fetch(`${API_ROOT}/auth/google`, {  
+            method: 'POST',
+            // mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -55,11 +89,7 @@ export const getBackendToken = async (dispatch, data) => {
                 payload: json.token
             })
         } else {
-            dispatch({
-                type: GOOGLE_LOGIN_FAIL,
-                error: true,
-                payload: response.statusText
-            })
+            throw new Error(response.status);            
         }
     } catch (e) {
         dispatch({
