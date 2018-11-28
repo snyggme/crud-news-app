@@ -4,6 +4,6 @@ import { feedsReducer } from './feeds';
 import { authReducer } from './auth';
 
 export const rootReducer = combineReducers({
-	feeds: feedsReducer,
+	news: feedsReducer,
 	auth: authReducer
 })

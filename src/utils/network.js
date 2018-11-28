@@ -74,7 +74,7 @@ export const getBackendToken = async (dispatch, data) => {
     try {
         const response = await fetch(`${API_ROOT}/auth/google`, {  
             method: 'POST',
-            // mode: 'cors',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },

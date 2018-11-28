@@ -5,7 +5,7 @@ import EditorsArticles from './EditorsArticles';
 
 class Main extends Component {
 	componentDidMount() {
-		// this.props.getFeeds();
+		this.props.getFeeds();
 	}
 	render() {
 		const { isLoading } = this.props;
@@ -13,16 +13,12 @@ class Main extends Component {
 		if (isLoading)
 			return <div className='loading' />
 
-		const feed = {
-			title: 'fresh title',
-			content: 'fresh content'
-		};
+		const { feeds } = this.props.news
 
 		return (
 			<main className='main-wrapper'>
 				<MainContent />
-				<button onClick={this.props.createFeed.bind(null, feed)}>create feed</button>
-				<PopularArticles />
+				<PopularArticles feeds={feeds} />
 				<EditorsArticles />
 			</main>
 		)	

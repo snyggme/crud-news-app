@@ -33,7 +33,7 @@ class App extends Component {
 
 const mapStateToProps = store => {
     return {
-        feeds: store.feeds,
+        news: store.news,
         auth: store.auth
     }
 }

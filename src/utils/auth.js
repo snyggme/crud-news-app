@@ -52,23 +52,40 @@ class Auth {
         
         return username;
     }
-    getGoogleToken() {
-        const user = JSON.parse(sessionStorage.getItem('user'));
+    getUserId() {
+        const { _id } = JSON.parse(sessionStorage.getItem('user'));
 
-        return user.googleToken;
+        return _id;
+    }
+    getGoogleToken() {
+        const { googleToken } = JSON.parse(sessionStorage.getItem('user'));
+
+        return googleToken;
     }
     getBackendToken() {
-        const user = JSON.parse(sessionStorage.getItem('user'));
+        const { backendToken } = JSON.parse(sessionStorage.getItem('user'));
         
-        return user.backendToken;
+        return backendToken;
     }
-    setBackendToken(backendToken) {
+    setBackendToken(token) {
         let user = JSON.parse(sessionStorage.getItem('user'));
+        const _id = parseJWT(token).id
 
-        user = { ...user, backendToken };
+        user = { 
+            ...user,
+             _id,
+             backendToken: token 
+        };
         
         sessionStorage.setItem('user', JSON.stringify(user));
     }
 }
+
+const parseJWT = (token) => {
+    let base64Url = token.split('.')[1];
+    let base64 = base64Url.replace('-', '+').replace('_', '/');
+
+    return JSON.parse(window.atob(base64));
+};
 
 export default new Auth();

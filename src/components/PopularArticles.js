@@ -9,7 +9,7 @@ const articles = [
 	'https://picsum.photos/200/150?image=101'
 ]
 
-const PopularArticles = () => {
+const PopularArticles = (props) => {
 	return (
 		<section className='popular-articles'>
 				<header className='title'>
@@ -17,8 +17,13 @@ const PopularArticles = () => {
 					<Link to='/news'>MORE ></Link>
 				</header>
 				{ 
-					articles.map(src => 
-						<Article src={src} key={src} full={true} />
+					props.feeds.map((feed, index) => 
+						<Article 
+							feed={feed} 
+							src={articles[index]} 
+							key={articles[index]} 
+							full={true} 
+						/>
 					)
 				}
 		</section>

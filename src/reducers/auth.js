@@ -21,7 +21,7 @@ export const authReducer = (state = initialState, action) => {
 			}
 		case GOOGLE_LOGIN_SUCCESS:
 			auth.setBackendToken(action.payload);
-
+			
 			return {
 				...state,
 				isSigned: auth.isSigned(),

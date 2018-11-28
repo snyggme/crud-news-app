@@ -16,29 +16,32 @@ class Article extends Component {
 		this.rand3 = Math.floor(Math.random() * 20) + 3;
 	}
 	render() {
-		const { full } = this.props;
+		const { full, src, feed } = this.props;
+		// const { content, createDate, creator: { _id, displayName }, title } = feed;
 		
 		return (
 			<article>
 				<div className='article-content'>
-					<h2>Article Name</h2>
+					<h2>{1}</h2>
 					{ full &&
 						<p className='description'>
-							Article short Description. How much symbols?
+							{1}
 						</p>
 					}
-					<p className='author-name'>Author Name</p>
+					<p className='author-name'>{1}</p>
 					<p>
-						{`${months[this.rand2]} ${this.rand1}`}  &#183; {`${this.rand3} min read`}
+						{1}  &#183; {`${this.rand3} min read`}
 					</p>
 				</div>
 				{ full &&
-					<img src={this.props.src} alt=' ' />
+					<img src={src} alt=' ' />
 				}
 			</article>
 		)	
 	}
 }
+
+// {`${months[this.rand2]} ${this.rand1}`}
 
 export default Article;
 
