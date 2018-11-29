@@ -11,38 +11,37 @@ class Article extends Component {
 		this.rand3 = 0;
 	}
 	componentWillMount() {
-		this.rand1 = Math.floor(Math.random() * 28) + 1;
-		this.rand2 = Math.floor(Math.random() * 12);
-		this.rand3 = Math.floor(Math.random() * 20) + 3;
+		this.rand1 = Math.floor(Math.random() * 20) + 3;
+		this.rand2 = Math.floor(Math.random() * 100) + 1;
 	}
 	render() {
-		const { full, src, feed } = this.props;
-		// const { content, createDate, creator: { _id, displayName }, title } = feed;
-		
+		const { full, feed } = this.props;
+		const { content, createDate, creator: { displayName }, title } = feed;
+
+		const date = new Date(createDate);
+
 		return (
 			<article>
 				<div className='article-content'>
-					<h2>{1}</h2>
+					<h2>{title}</h2>
 					{ full &&
 						<p className='description'>
-							{1}
+							{content}
 						</p>
 					}
-					<p className='author-name'>{1}</p>
+					<p className='author-name'>{displayName}</p>
 					<p>
-						{1}  &#183; {`${this.rand3} min read`}
+						{`${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`}  &#183; {`${this.rand1} min read`}
 					</p>
 				</div>
 				{ full &&
-					<img src={src} alt=' ' />
+					<img src={`https://picsum.photos/200/150/?image=${this.rand2}`} alt=' ' />
 				}
 			</article>
 		)	
 	}
 }
 
-// {`${months[this.rand2]} ${this.rand1}`}
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 export default Article;
-
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

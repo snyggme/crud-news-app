@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainContent from './MainContent';
+import ArticlesWrapper from './ArticlesWrapper';
 import PopularArticles from './PopularArticles';
 import EditorsArticles from './EditorsArticles';
 
@@ -8,18 +9,24 @@ class Main extends Component {
 		this.props.getFeeds();
 	}
 	render() {
-		const { isLoading } = this.props;
+		const { isLoading, feeds } = this.props.news;
 
-		if (isLoading)
-			return <div className='loading' />
-
-		const { feeds } = this.props.news
+		const popularFeeds = feeds.filter((feed, index) => index < 4)
+		const editorsFeeds = popularFeeds.filter((feed, index) => index < 3)
 
 		return (
 			<main className='main-wrapper'>
 				<MainContent />
-				<PopularArticles feeds={feeds} />
-				<EditorsArticles />
+				<ArticlesWrapper 
+					Component={PopularArticles}
+					isLoading={isLoading}
+					feeds={popularFeeds}
+				/>
+				<ArticlesWrapper 
+					Component={EditorsArticles}
+					isLoading={isLoading}
+					feeds={editorsFeeds}
+				/>
 			</main>
 		)	
 	}
