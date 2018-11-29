@@ -23,7 +23,9 @@ class App extends Component {
                     <Route exact path='/' render={ renderProps =>
                         <Main {...this.props} {...renderProps }/>
                     } />             
-                    <Route path='/news' component={News} />
+                    <Route path='/news' render={ renderProps =>
+                        <News {...this.props} {...renderProps }/>
+                    }/>
                 </Switch>
                 <Footer />
             </div>
@@ -51,6 +53,3 @@ export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
 )(App));
-
-
-// <PrivateRoute path='/profile' component={Profile} />

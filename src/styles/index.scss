@@ -233,6 +233,17 @@ section.editors-articles {
 	}
 }
 
+section.all-feeds {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+}
+
 footer {
 	text-align: center;
 	

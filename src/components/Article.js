@@ -3,12 +3,9 @@ import React, { Component } from 'react';
 class Article extends Component {
 	constructor(props) {
 		super(props);
-		// day
+
 		this.rand1 = 1;
-		// month
 		this.rand2 = 0;
-		// mins read
-		this.rand3 = 0;
 	}
 	componentWillMount() {
 		this.rand1 = Math.floor(Math.random() * 20) + 3;

@@ -9,7 +9,7 @@ const Navbar = (props) => {
 		<nav className='flex-nav'>
 			<ul>
 				<li className='flex-logo'>
-					<Link to='/news'>
+					<Link to='/'>
 						<img className='logo' src={logo} alt="logo" />
 						Super Awesome News
 					</Link>
