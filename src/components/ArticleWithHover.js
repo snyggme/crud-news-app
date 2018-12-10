@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditorTools from './EditorTools';
 import auth from '../utils/auth';
 
 class ArticleWithHover extends Component {
@@ -29,6 +30,7 @@ class ArticleWithHover extends Component {
 	}
 	render() {
 		const { Component, ...rest } = this.props;
+		const { _id } = this.props.feed;
 		const { hovering } = this.state;
 
 		return (
@@ -40,7 +42,7 @@ class ArticleWithHover extends Component {
 					{...rest}
 				/>
 				{ hovering &&
-					'HOVERING'
+					<EditorTools id={_id} />
 				}
 			</div>
 		)	
