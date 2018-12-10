@@ -3,7 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Navbar from './components/Navbar';
-import News from './components/News';
+import NewsContainer from './components/NewsContainer';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
@@ -24,7 +24,7 @@ class App extends Component {
                         <Main {...this.props} {...renderProps }/>
                     } />             
                     <Route path='/news' render={ renderProps =>
-                        <News {...this.props} {...renderProps }/>
+                        <NewsContainer {...this.props} {...renderProps }/>
                     }/>
                 </Switch>
                 <Footer />

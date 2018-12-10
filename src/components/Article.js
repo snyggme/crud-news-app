@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Article extends Component {
 	constructor(props) {
@@ -13,17 +14,22 @@ class Article extends Component {
 	}
 	render() {
 		const { full, feed } = this.props;
-		const { content, createDate, creator: { displayName }, title } = feed;
+		const { _id, createDate, creator: { displayName }, title } = feed;
+		let { content } = feed;
+
+		if (content.length > 200) {
+			content = content.slice(0, 200) + ' ...';
+		}
 
 		const date = new Date(createDate);
 
 		return (
 			<article>
 				<div className='article-content'>
-					<h2>{title}</h2>
+					<h2><Link to={`/news/${_id}`}>{title}</Link></h2>
 					{ full &&
 						<p className='description'>
-							{content}
+							<Link to={`/news/${_id}`}>{content}</Link>
 						</p>
 					}
 					<p className='author-name'>{displayName}</p>
@@ -32,7 +38,12 @@ class Article extends Component {
 					</p>
 				</div>
 				{ full &&
-					<img src={`https://picsum.photos/200/150/?image=${this.rand2}`} alt=' ' />
+					<Link to={`/news/${_id}`}>
+						<img 
+							src={`https://picsum.photos/200/150/?image=${this.rand2}`}
+							alt=' ' 
+						/>
+					</Link>
 				}
 			</article>
 		)	

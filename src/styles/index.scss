@@ -146,6 +146,12 @@ div.main-content {
 	}
 }
 
+article a {
+	text-decoration: none;
+	color: inherit;
+	outline: none;
+}
+
 section.popular-articles {
 	flex: 0 1 55%;
 
@@ -234,15 +240,47 @@ section.editors-articles {
 }
 
 section.all-feeds {
-	max-width: 1000px;
+	max-width: 900px;
 	margin: 0 auto;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	display: flex;
 	flex-direction: column;
 
-	article {
-		
+	div.article-container {
+
+		article {
+			display: flex;
+			margin-bottom: 50px;
+
+			.article-content {
+				flex: 1 1;
+				padding-right: 30px;
+				font-size: 18px;
+
+				h2 {
+					padding-left: 20px;
+					padding-bottom: 10px;
+					font-size: 30px;
+					color: black;
+				}
+
+				p.description {
+					text-align: justify;
+					color: black;
+					font-size: 20px;
+					padding-bottom: 15px;
+				}
+
+				p.author-name {
+					padding-bottom: 5px;
+				}
+			}
+
+			a {
+				align-self: center;
+			}
+		}
 	}
 
 }

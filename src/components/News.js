@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import Article from './Article';
+import ArticleWithHover from './ArticleWithHover';
 
 class News extends Component {
-	componentDidMount() {
-		this.props.getFeeds();
-	}
 	render() {
-		const { isLoading, feeds } = this.props.news;
-
-		if (isLoading) 
-			return <div className='loading' />
+		const { feeds } = this.props.news;
 
 		return (
 			<section className='all-feeds'>
 				{
 					feeds.map(feed => 
-						<Article 
+						<ArticleWithHover 
+							Component={Article}
 							feed={feed}
 							key={feed._id} 
 							full={true}

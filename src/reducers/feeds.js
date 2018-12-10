@@ -4,7 +4,7 @@ import { GET_FEEDS_FAIL } from '../actions/FeedsAction';
 
 const initialState = {
 	feeds: [],
-	isLoading: false,
+	isLoading: true,
 	error: ''
 };
 

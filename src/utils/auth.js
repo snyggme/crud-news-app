@@ -48,21 +48,33 @@ class Auth {
         return sessionStorage.getItem('user') !== null
     }
     getUsername() {
+        if (!this.isSigned())
+            return null
+
         const { username } = JSON.parse(sessionStorage.getItem('user'));
         
         return username;
     }
     getUserId() {
+        if (!this.isSigned())
+            return null
+
         const { _id } = JSON.parse(sessionStorage.getItem('user'));
 
         return _id;
     }
     getGoogleToken() {
+        if (!this.isSigned())
+            return null
+
         const { googleToken } = JSON.parse(sessionStorage.getItem('user'));
 
         return googleToken;
     }
     getBackendToken() {
+        if (!this.isSigned())
+            return null
+
         const { backendToken } = JSON.parse(sessionStorage.getItem('user'));
         
         return backendToken;
