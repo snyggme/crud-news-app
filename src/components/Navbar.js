@@ -14,7 +14,13 @@ const Navbar = (props) => {
 						Super Awesome News
 					</Link>
 				</li>
+				<li className='flex-news'>
+					<Link to='/news'>
+						News
+					</Link>
+				</li>
 				<NewsSearch className='flex-search' />
+				
 				<SignIn {...props} />			
 			</ul>
 		</nav>

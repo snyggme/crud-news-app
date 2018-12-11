@@ -82,6 +82,10 @@ body {
 		}
 	}
 
+	li.flex-news {
+		color: $maintheme;
+	}
+
 	li.flex-login {
 		flex-basis: 200px;
 		color: $maintheme;
@@ -137,6 +141,7 @@ div.main-content {
 			margin-top: 30px;
 			border-radius: 4px;
 			outline: none;
+			transition: all 200ms;
 
 			&:hover {
 				color: white;
@@ -327,6 +332,7 @@ button.btn {
 	padding-top: 8px;
 	padding-bottom: 8px;
 	outline: none;
+	transition: all 200ms;
 
 	&:hover {
 		background-color: $maintheme;
@@ -334,7 +340,7 @@ button.btn {
 }
 
 article.single-feed-container {
-	min-height: 86vh;
+	min-height: 83vh;
 	max-width: 800px;
 	margin: 0 auto;
 	font-size: 25px;
@@ -392,6 +398,16 @@ article.single-feed-container {
 			};
 		}
 	}
+
+	div.btns-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+
+		a {
+			justify-self: flex-end;
+		}
+	}
 }
 
 section.editor-container {
@@ -405,16 +421,17 @@ article.editor {
 	padding-top: 50px;
 	display: flex;
 	flex-wrap: wrap;
+	font-size: 20px;
 
 	* {
 		flex-basis: 100%;
 	}
 
 	input {
-		border: 1px solid $maintheme;
+		border: 2px solid #746396;
 		border-radius: 4px;
 		margin-bottom: 40px;
-		padding: 10px 15px;
+		padding: 15px 25px;
 		outline: none;
 		color: $maintheme;
 
@@ -424,11 +441,12 @@ article.editor {
 	}
 
 	textarea {
-		border: 1px solid $maintheme;
+		border: 2px solid #746396;
 		border-radius: 4px;
-		padding: 10px 15px;
+		padding: 20px 25px;
 		outline: none;
 		color: $maintheme;
+		text-align: justify;
 
 		&:focus {
 			border: 2px solid $maintheme;
@@ -436,7 +454,13 @@ article.editor {
 	}
 
 	div {
-		justify-self: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+
+		button.btn-save {
+			justify-self: flex-end;
+		}
 	}
 }
 

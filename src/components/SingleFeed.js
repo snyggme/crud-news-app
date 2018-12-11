@@ -46,15 +46,14 @@ class SingleFeed extends Component {
 				<p>{content}</p>
 				{ userId === _id &&
 					(
-						<div>
+						<div className='btns-container'>
 							<Link to={`/news/${newsId}/edit`}>
-								<button className='btn'>Edit</button>
+								<button className='btn btn-edit'>Edit</button>
 							</Link>
-							<button className='btn' onClick={this.handleDelete}>Delete</button>
+							<button className='btn btn-delete' onClick={this.handleDelete}>Delete</button>
 						</div>
 					)
 				}
-				
 			</article>
 		)	
 	}

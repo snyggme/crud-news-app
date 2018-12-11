@@ -36,10 +36,10 @@ class EditArticle extends Component {
 					<input ref={this.inputRef} type='text' defaultValue={title} />
 					<textarea ref={this.textareaRef} rows="15" cols="80" defaultValue={content} />
 					<div>
-						<button className='btn' onClick={this.handleSave}>
+						<button className='btn btn-save' onClick={this.handleSave}>
 							Save
 						</button>
-						<button className='btn' onClick={this.handleCancel}>
+						<button className='btn btn-cancel' onClick={this.handleCancel}>
 							Cancel
 						</button>
 					</div>

@@ -87,7 +87,27 @@ export const feedsReducer = (state = initialState, action) => {
 				...state,
 				isLoading: false,
 				error: action.payload
-			}			
+			}	
+		case POST_FEED_REQUEST:
+			return {
+				...state,
+				isLoading: true
+			}
+		case POST_FEED_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				feeds: [
+					...state.feeds,
+					action.payload
+				]
+			}
+		case POST_FEED_FAIL:
+			return {
+				...state,
+				isLoading: false,
+				error: action.payload
+			}		
  		default:
 			return state;
 	}
