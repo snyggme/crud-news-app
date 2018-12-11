@@ -394,15 +394,49 @@ article.single-feed-container {
 	}
 }
 
+section.editor-container {
+	min-height: 85vh;
+}
+
 article.editor {
-	min-height: 86vh;
 	max-width: 800px;
 	margin: 0 auto;
+	color: grey;
+	padding-top: 50px;
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
+
+	* {
+		flex-basis: 100%;
+	}
 
 	input {
-		flex: 0 1 50%;
+		border: 1px solid $maintheme;
+		border-radius: 4px;
+		margin-bottom: 40px;
+		padding: 10px 15px;
+		outline: none;
+		color: $maintheme;
+
+		&:focus {
+			border: 2px solid $maintheme;
+		}
+	}
+
+	textarea {
+		border: 1px solid $maintheme;
+		border-radius: 4px;
+		padding: 10px 15px;
+		outline: none;
+		color: $maintheme;
+
+		&:focus {
+			border: 2px solid $maintheme;
+		}	
+	}
+
+	div {
+		justify-self: center;
 	}
 }
 

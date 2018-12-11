@@ -31,18 +31,20 @@ class EditArticle extends Component {
 		const { title, content } = feed;
 
 		return (
-			<article className='editor'>
-				<input ref={this.inputRef} type='text' defaultValue={title} />
-				<textarea ref={this.textareaRef} rows="15" cols="80" defaultValue={content} />
-				<div>
-					<button className='btn' onClick={this.handleSave}>
-						Save
-					</button>
-					<button className='btn' onClick={this.handleCancel}>
-						Cancel
-					</button>
-				</div>
-			</article>
+			<section className='editor-container'>
+				<article className='editor'>
+					<input ref={this.inputRef} type='text' defaultValue={title} />
+					<textarea ref={this.textareaRef} rows="15" cols="80" defaultValue={content} />
+					<div>
+						<button className='btn' onClick={this.handleSave}>
+							Save
+						</button>
+						<button className='btn' onClick={this.handleCancel}>
+							Cancel
+						</button>
+					</div>
+				</article>
+			</section>
 		)
 	}
 }
