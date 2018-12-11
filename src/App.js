@@ -7,11 +7,19 @@ import NewsContainer from './components/NewsContainer';
 import Main from './components/Main';
 import Footer from './components/Footer';
 
-import { getFeeds, createFeed } from './actions/FeedsAction';
+import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
 import { googleLogin, googleLogout } from './actions/AuthAction';
 import auth from './utils/auth';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleAddFeed = this.handleAddFeed.bind(this);
+    }
+    handleAddFeed() {
+        this.props.createFeed({title: 'fresh title', content: 'fresh content'})
+    }
     componentDidMount() {
         auth.init();
     }
@@ -27,6 +35,7 @@ class App extends Component {
                         <NewsContainer {...this.props} {...renderProps }/>
                     }/>
                 </Switch>
+                <button onClick={this.handleAddFeed}>ADD FEED</button>
                 <Footer />
             </div>
         );
@@ -45,7 +54,9 @@ const mapDispatchToProps = dispatch => {
         getFeeds: () => dispatch(getFeeds()),
         googleLogin: () => dispatch(googleLogin()),
         googleLogout: () => dispatch(googleLogout()),
-        createFeed: (feed) => dispatch(createFeed(feed))
+        createFeed: (feed) => dispatch(createFeed(feed)),
+        updateFeed: (feed, id) => dispatch(updateFeed(feed, id)),
+        deleteFeed: (id) => dispatch(deleteFeed(id))
     }
 }
 

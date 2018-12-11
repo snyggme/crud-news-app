@@ -42,7 +42,10 @@ class ArticleWithHover extends Component {
 					{...rest}
 				/>
 				{ hovering &&
-					<EditorTools id={_id} />
+					<EditorTools 
+						deleteFeed={this.props.deleteFeed}
+						id={_id} 
+					/>
 				}
 			</div>
 		)	

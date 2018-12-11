@@ -13,6 +13,7 @@ class News extends Component {
 						<ArticleWithHover 
 							Component={Article}
 							feed={feed}
+							deleteFeed={this.props.deleteFeed}
 							key={feed._id} 
 							full={true}
 						/>

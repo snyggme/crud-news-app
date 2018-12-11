@@ -2,7 +2,11 @@ import {
     GET_FEEDS_SUCCESS,
     GET_FEEDS_FAIL,
     POST_FEED_SUCCESS,
-    POST_FEED_FAIL
+    POST_FEED_FAIL,
+    PUT_FEED_SUCCESS,
+    PUT_FEED_FAIL,
+    DELETE_FEED_SUCCESS,
+    DELETE_FEED_FAIL
 } from '../actions/FeedsAction';
 import {
     GOOGLE_LOGIN_SUCCESS,
@@ -64,6 +68,67 @@ export const httpPostFeed = async (dispatch, feed) => {
     } catch (e) {
         dispatch({
             type: POST_FEED_FAIL,
+            error: true,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const httpPutFeed = async (dispatch, feed, id) => {
+    try {
+        const response = await fetch(`${API_ROOT}/feeds/${id}`, {  
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': auth.getBackendToken()
+            },
+            body: JSON.stringify(feed)
+        });
+
+        if (response.ok) {
+            const json = await response.json();
+
+            dispatch({
+                type: PUT_FEED_SUCCESS,
+                payload: json.feed
+            })
+        } else {
+            throw new Error(response.status);            
+        }
+    } catch (e) {
+        dispatch({
+            type: PUT_FEED_FAIL,
+            error: true,
+            payload: new Error(e).message
+        })
+    }
+}
+
+export const httpDeleteFeed = async (dispatch, id) => {
+    try {
+        const response = await fetch(`${API_ROOT}/feeds/${id}`, {  
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': auth.getBackendToken()
+            }
+        });
+
+        if (response.ok) {
+            const json = await response.json();
+            
+            dispatch({
+                type: DELETE_FEED_SUCCESS,
+                payload: json._id
+            })
+        } else {
+            throw new Error(response.status);            
+        }
+    } catch (e) {
+        dispatch({
+            type: DELETE_FEED_FAIL,
             error: true,
             payload: new Error(e).message
         })

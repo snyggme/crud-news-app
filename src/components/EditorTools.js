@@ -8,7 +8,7 @@ class EditorTools extends Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 	handleClick() {
-
+		this.props.deleteFeed(this.props.id);
 	}
 	render() {
 		const newsId = this.props.id;
