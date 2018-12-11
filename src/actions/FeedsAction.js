@@ -55,11 +55,11 @@ export const updateFeed = (feed, id) => {
 }
 
 export const deleteFeed = (id) => {
-	return async dispatch => {
+	return dispatch => {
 		dispatch({
 			type: DELETE_FEED_REQUEST
 		});
 
-		await httpDeleteFeed(dispatch, id);
+		httpDeleteFeed(dispatch, id);
 	}
 }

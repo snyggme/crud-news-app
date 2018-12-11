@@ -35,8 +35,12 @@ class EditArticle extends Component {
 				<input ref={this.inputRef} type='text' defaultValue={title} />
 				<textarea ref={this.textareaRef} rows="15" cols="80" defaultValue={content} />
 				<div>
-					<button className='btn' onClick={this.handleSave}>Save</button>
-					<button className='btn' onClick={this.handleCancel}>Cancel</button>
+					<button className='btn' onClick={this.handleSave}>
+						Save
+					</button>
+					<button className='btn' onClick={this.handleCancel}>
+						Cancel
+					</button>
 				</div>
 			</article>
 		)
