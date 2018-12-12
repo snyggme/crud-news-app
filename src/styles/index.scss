@@ -489,6 +489,12 @@ footer {
     animation: spin 1.5s linear infinite;
 }
 
+div.no-results, div.no-match, div.error {
+	width: 1000px;
+	margin: 100px auto;
+	font-size: 70px;
+}
+
 @-webkit-keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

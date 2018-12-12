@@ -14,7 +14,8 @@ class CreateArticle extends Component {
 
 		const newsId = await this.props.createFeed({ title, content });
 
-		this.props.history.push(`/news/${newsId}`);
+		if (newsId !== undefined)
+			this.props.history.push(`/news/${newsId}`);
 	}
 	handleCancel() {
 		this.props.history.push('/news');

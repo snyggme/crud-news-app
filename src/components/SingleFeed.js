@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import auth from '../utils/auth';
 import EditorTools from './EditorTools';
 import { Link } from 'react-router-dom';
+import NoMatch from './NoMatch';
+import { isNewsIdValid } from '../utils/other';
 
 class SingleFeed extends Component {
 	constructor(props) {
@@ -19,6 +21,9 @@ class SingleFeed extends Component {
 	render() {
 		const { feeds } = this.props.news;
 		const { newsId } = this.props.match.params;
+
+		if(!isNewsIdValid(newsId, feeds))
+			return <NoMatch />
 
 		const feed = feeds.find(feed => feed._id === newsId)
 

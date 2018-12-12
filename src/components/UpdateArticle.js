@@ -1,5 +1,7 @@
 import React, { Component} from 'react';
 import EditArticleProto from './EditArticleProto';
+import NoMatch from './NoMatch';
+import { isNewsIdValid } from '../utils/other';
 
 class UpdateArticle extends Component {
 	constructor(props) {
@@ -24,6 +26,9 @@ class UpdateArticle extends Component {
 	render() {
 		const { feeds } = this.props.news;
 		const { newsId } = this.props.match.params;
+
+		if(!isNewsIdValid(newsId, feeds))
+			return <NoMatch />
 
 		const feed = feeds.find(feed => feed._id === newsId)
 

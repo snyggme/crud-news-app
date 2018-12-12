@@ -42,6 +42,7 @@ export const feedsReducer = (state = initialState, action) => {
 		case PUT_FEED_REQUEST:
 			return {
 				...state,
+				error: '',
 				isLoading: true
 			}
 		case PUT_FEED_SUCCESS:
@@ -50,7 +51,7 @@ export const feedsReducer = (state = initialState, action) => {
 			const i = state.feeds.findIndex(feed => feed._id === _id)
 
 			return {
-				...state,
+				error: '',
 				isLoading: false,
 				feeds: [
 					...state.feeds.slice(0, i),
@@ -67,6 +68,7 @@ export const feedsReducer = (state = initialState, action) => {
 		case DELETE_FEED_REQUEST:
 			return {
 				...state,
+				error: '',
 				isLoading: true
 			}
 		case DELETE_FEED_SUCCESS:
@@ -75,7 +77,7 @@ export const feedsReducer = (state = initialState, action) => {
 			const index = state.feeds.findIndex(feed => feed._id === id)
 			
 			return {
-				...state,
+				error: '',
 				isLoading: false,
 				feeds: [
 					...state.feeds.slice(0, index),
@@ -91,11 +93,12 @@ export const feedsReducer = (state = initialState, action) => {
 		case POST_FEED_REQUEST:
 			return {
 				...state,
+				error: '',
 				isLoading: true
 			}
 		case POST_FEED_SUCCESS:
 			return {
-				...state,
+				error: '',
 				isLoading: false,
 				feeds: [
 					...state.feeds,

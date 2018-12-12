@@ -5,6 +5,8 @@ import SingleFeed from './SingleFeed';
 import UpdateArticle from './UpdateArticle';
 import CreateArticle from './CreateArticle';
 import SearchedArticles from './SearchedArticles';
+import NoMatch from './NoMatch';
+import ErrorMessage from './ErrorMessage';
 
 class NewsContainer extends Component {
 	componentDidMount() {
@@ -33,6 +35,7 @@ class NewsContainer extends Component {
                 <Route path='/news' render={ renderProps =>
                 	<News {...this.props} {...renderProps }/>
                	}/>
+                <Route component={NoMatch} />
             </Switch>
 		)	
 	}

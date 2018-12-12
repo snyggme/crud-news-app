@@ -6,7 +6,7 @@ const SearchedArticles = (props) => {
 	const { feeds } = props.search;
 
 	if (feeds.length === 0) 
-		return <div>Nothing found :(</div>
+		return <div className='no-results'>Nothing found :(</div>
 		
 	return (
 		<section className='all-feeds'>

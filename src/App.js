@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import NewsContainer from './components/NewsContainer';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import NoMatch from './components/NoMatch';
 
 import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
 import { googleLogin, googleLogout } from './actions/AuthAction';
@@ -27,6 +28,7 @@ class App extends Component {
                     <Route path='/news' render={ renderProps =>
                         <NewsContainer {...this.props} {...renderProps }/>
                     }/>
+                    <Route component={NoMatch} />
                 </Switch>
                 <Footer />
             </div>
