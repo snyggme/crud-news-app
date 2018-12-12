@@ -9,17 +9,10 @@ import Footer from './components/Footer';
 
 import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
 import { googleLogin, googleLogout } from './actions/AuthAction';
+import { setSearchedFeeds } from './actions/SearchAction';
 import auth from './utils/auth';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleAddFeed = this.handleAddFeed.bind(this);
-    }
-    handleAddFeed() {
-        this.props.createFeed({title: 'fresh title', content: 'fresh content'})
-    }
     componentDidMount() {
         auth.init();
     }
@@ -35,7 +28,6 @@ class App extends Component {
                         <NewsContainer {...this.props} {...renderProps }/>
                     }/>
                 </Switch>
-                <button onClick={this.handleAddFeed}>ADD FEED</button>
                 <Footer />
             </div>
         );
@@ -45,7 +37,8 @@ class App extends Component {
 const mapStateToProps = store => {
     return {
         news: store.news,
-        auth: store.auth
+        auth: store.auth,
+        search: store.search
     }
 }
 
@@ -56,7 +49,8 @@ const mapDispatchToProps = dispatch => {
         googleLogout: () => dispatch(googleLogout()),
         createFeed: (feed) => dispatch(createFeed(feed)),
         updateFeed: (feed, id) => dispatch(updateFeed(feed, id)),
-        deleteFeed: (id) => dispatch(deleteFeed(id))
+        deleteFeed: (id) => dispatch(deleteFeed(id)),
+        setSearchedFeeds: (feeds) => dispatch(setSearchedFeeds(feeds))
     }
 }
 

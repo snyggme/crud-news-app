@@ -35,12 +35,12 @@ export const getFeeds = () => {
 }
 
 export const createFeed = (feed) => {
-	return dispatch => {
+	return async dispatch => {
 		dispatch({
 			type: POST_FEED_REQUEST
 		});
 
-		httpPostFeed(dispatch, feed);
+		return await httpPostFeed(dispatch, feed);
 	}
 }
 

@@ -24,7 +24,7 @@ body {
 
 	li {
 		text-align: center;
-		flex: 0 1 150px;
+		flex: 0 1 100px;
 
 		a {
 			text-decoration: none;
@@ -87,7 +87,7 @@ body {
 	}
 
 	li.flex-login {
-		flex-basis: 200px;
+		flex-basis: 180px;
 		color: $maintheme;
 		
 		span {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MainContent from './MainContent';
 import ArticlesWrapper from './ArticlesWrapper';
 import PopularArticles from './PopularArticles';
-import EditorsArticles from './EditorsArticles';
+import BestArticles from './BestArticles';
 
 class Main extends Component {
 	componentDidMount() {
@@ -23,7 +23,7 @@ class Main extends Component {
 					feeds={popularFeeds}
 				/>
 				<ArticlesWrapper 
-					Component={EditorsArticles}
+					Component={BestArticles}
 					isLoading={isLoading}
 					feeds={editorsFeeds}
 				/>

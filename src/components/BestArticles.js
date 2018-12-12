@@ -1,8 +1,7 @@
 import React from 'react';
 import Article from './Article';
-// import { Link } from 'react-router-dom';
 
-const EditorsArticles = ({ feeds }) => {
+const BestArticles = ({ feeds }) => {
 	return (
 		<section className='editors-articles'>
 				<header className='title'>
@@ -21,4 +20,4 @@ const EditorsArticles = ({ feeds }) => {
 	)
 }
 
-export default EditorsArticles;
+export default BestArticles;

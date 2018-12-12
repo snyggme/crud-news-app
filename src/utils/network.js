@@ -62,6 +62,8 @@ export const httpPostFeed = async (dispatch, feed) => {
                 type: POST_FEED_SUCCESS,
                 payload: json.feed
             })
+            
+            return json.feed._id
         } else {
             throw new Error(response.status);            
         }
