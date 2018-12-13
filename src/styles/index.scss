@@ -466,8 +466,8 @@ article.editor {
 
 #login-form {
 	max-width: 300px;
-	margin: 200px auto;
-	margin-bottom: 30px;
+	margin: 100px auto;
+	margin-bottom: 00px;
 	height: 200px;
 	font-size: 16px;
 	display: flex;
@@ -491,16 +491,45 @@ article.editor {
 		border-color: grey;
 	}
 
-	#submit-btn {
+	#login-btn {
 		padding: 0;
 		color: #545454;
 		background-color: #E1E2E1;
-		border-color: #a8a8a8;
+		border: none;
 
 		&:hover {
 			background-color: #cecece;
 		}
 	}
+
+	#login-with-google-btn {
+		padding: 0;
+		color: white;
+		background-color: rgb(209, 66, 43);
+		border: none;
+
+		&:hover {
+			background-color: rgb(173, 47, 27);
+		}
+	}
+}
+
+p.signup-q {
+	max-width: 250px;
+	margin: 20px auto;
+	margin-bottom: 200px;
+
+	a {
+		text-decoration: none;
+		color: $maintheme;
+	}
+}
+
+.recaptcha {
+	margin: 0 auto;
+	width: 300px;
+	margin-top: 20px;
+	margin-bottom: 200px;
 }
 
 footer {

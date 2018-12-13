@@ -7,7 +7,8 @@ import NewsContainer from './components/NewsContainer';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
-import LoginForm from './components/LoginForm';
+import LoginPage from './components/LoginPage';
+import SignupPage from './components/SignupPage';
 
 import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
 import { googleLogin, googleLogout } from './actions/AuthAction';
@@ -26,8 +27,11 @@ class App extends Component {
                     <Route exact path='/' render={ renderProps =>
                         <Main {...this.props} {...renderProps }/>
                     }/>             
+                    <Route path='/login' render={ renderProps =>
+                        <LoginPage {...this.props} {...renderProps }/>
+                    } />
                     <Route path='/signup' render={ renderProps =>
-                        <LoginForm {...this.props} {...renderProps }/>
+                        <SignupPage {...this.props} {...renderProps }/>
                     } />
                     <Route path='/news' render={ renderProps =>
                         <NewsContainer {...this.props} {...renderProps }/>
@@ -37,7 +41,7 @@ class App extends Component {
                 <Footer />
             </div>
         );
-  }
+    }
 }
 
 const mapStateToProps = store => {

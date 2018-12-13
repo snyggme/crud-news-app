@@ -7,6 +7,7 @@ import logo from '../assets/logo.svg';
 
 const Navbar = (props) => {
 	const signed = auth.isSigned();
+	// const signing = this.props.auth.isSigning;
 
 	return (
 		<nav className='flex-nav'>
@@ -34,10 +35,13 @@ const Navbar = (props) => {
 					feeds={props.news.feeds}
 					setSearchedFeeds={props.setSearchedFeeds}
 					history={props.history} />
-				<SignIn {...props} />	
-				<li className='flex-news'>
-					<Link to='/signup'>
-						Sign up
+				<li className='flex-login'>
+					<Link to='/login'>
+						{ 
+							signed 
+								? `${auth.getUsername()} | Logout` 
+								: 'Login'
+						}
 					</Link>
 				</li>		
 			</ul>

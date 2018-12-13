@@ -11,8 +11,8 @@ const SignIn = (props) => {
 				: isSigned 
 					?
 						<div> 
-							{auth.getUsername()} | 
-							<span onClick={props.googleLogout}> Logout</span>
+							{auth.getUsername()}
+							<span onClick={props.googleLogout}> | Logout</span>
 						</div>
 					: 
 						<div> 
