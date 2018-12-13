@@ -15,7 +15,7 @@ export const googleLogin = () => {
 
 		const token = await auth.signIn();
 
-        getBackendToken(dispatch, token);
+        await getBackendToken(dispatch, token);
 	} 
 }
 

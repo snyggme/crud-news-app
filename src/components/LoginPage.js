@@ -7,16 +7,19 @@ class LoginForm extends Component {
 	constructor(props) {
 		super(props);
 
-		this.verifyCallback = this.verifyCallback.bind(this);
-	}
-	verifyCallback(response) {
-		console.log(response);
 	}
 	render() {
 		return (
 		    <div>
-		    	<UserForm text='Login' />
-			    <p className='signup-q'>Don't have an account? Sign up <Link to='/signup'>here</Link></p>
+		    	<UserForm 
+		    		text='Login' 
+		    		googleLogin={this.props.googleLogin}
+		    		history={this.props.history}
+		    	/>
+			    <p className='signup-q'>
+			    	Don't have an account? Sign up
+			    	<Link to='/signup'> here</Link>
+			    </p>
 		    </div>
 	  	);
 	}

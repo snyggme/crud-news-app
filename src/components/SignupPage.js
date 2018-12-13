@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserForm from './UserForm';
 import Recaptcha from 'react-recaptcha';
-
+ 
 class SignUp extends Component {
 	constructor(props) {
 		super(props);

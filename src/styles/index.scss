@@ -86,10 +86,15 @@ body {
 		color: $maintheme;
 	}
 
+	li.flex-create a {
+		cursor: cell;
+		color: $maintheme;
+	}
+
 	li.flex-login {
 		flex-basis: 180px;
 		color: $maintheme;
-		
+
 		span {
 			cursor: pointer;
 		}
@@ -467,7 +472,7 @@ article.editor {
 #login-form {
 	max-width: 300px;
 	margin: 100px auto;
-	margin-bottom: 00px;
+	margin-bottom: 0px;
 	height: 200px;
 	font-size: 16px;
 	display: flex;
@@ -501,16 +506,21 @@ article.editor {
 			background-color: #cecece;
 		}
 	}
+}
 
-	#login-with-google-btn {
-		padding: 0;
-		color: white;
-		background-color: rgb(209, 66, 43);
-		border: none;
+#login-with-google-btn {
+	display: block;
+	width: 300px;
+	margin: 15px auto;
+	font-size: 16px;
+	color: white;
+	background-color: rgb(209, 66, 43);
+	border-radius: 6px;
+	border: none;
+	height: 40px;
 
-		&:hover {
-			background-color: rgb(173, 47, 27);
-		}
+	&:hover {
+		background-color: rgb(173, 47, 27);
 	}
 }
 

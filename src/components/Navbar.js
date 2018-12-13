@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NewsSearch from './NewsSearch';
-import SignIn from './SignIn';
+import SignButton from './SignButton';
 import auth from '../utils/auth';
 import logo from '../assets/logo.svg';
 
@@ -24,7 +24,7 @@ const Navbar = (props) => {
 					</Link>
 				</li>
 				{ signed &&
-					<li className='flex-news'>
+					<li className='flex-create'>
 						<Link to='/news/create'>
 							Create
 						</Link>
@@ -35,15 +35,7 @@ const Navbar = (props) => {
 					feeds={props.news.feeds}
 					setSearchedFeeds={props.setSearchedFeeds}
 					history={props.history} />
-				<li className='flex-login'>
-					<Link to='/login'>
-						{ 
-							signed 
-								? `${auth.getUsername()} | Logout` 
-								: 'Login'
-						}
-					</Link>
-				</li>		
+				<SignButton googleLogout={props.googleLogout} />	
 			</ul>
 		</nav>
 	)	
