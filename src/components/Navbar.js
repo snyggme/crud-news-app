@@ -34,7 +34,12 @@ const Navbar = (props) => {
 					feeds={props.news.feeds}
 					setSearchedFeeds={props.setSearchedFeeds}
 					history={props.history} />
-				<SignIn {...props} />			
+				<SignIn {...props} />	
+				<li className='flex-news'>
+					<Link to='/signup'>
+						Sign up
+					</Link>
+				</li>		
 			</ul>
 		</nav>
 	)	

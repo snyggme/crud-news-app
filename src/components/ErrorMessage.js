@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ErrorMessage = ({ news: { error } }) => {
+const ErrorMessage = ({ msg }) => {
 	return (
-		<div className='error'>{error}</div>
+		<div className='error'>{msg}</div>
 	)
 }
 

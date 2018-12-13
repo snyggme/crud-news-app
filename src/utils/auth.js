@@ -81,7 +81,7 @@ class Auth {
     }
     setBackendToken(token) {
         let user = JSON.parse(sessionStorage.getItem('user'));
-        const _id = parseJWT(token).id
+        const _id = this.parseJWT(token).id
 
         user = { 
             ...user,
@@ -91,13 +91,12 @@ class Auth {
         
         sessionStorage.setItem('user', JSON.stringify(user));
     }
+    parseJWT(token) {
+        let base64Url = token.split('.')[1];
+        let base64 = base64Url.replace('-', '+').replace('_', '/');
+
+        return JSON.parse(window.atob(base64));
+    }
 }
-
-const parseJWT = (token) => {
-    let base64Url = token.split('.')[1];
-    let base64 = base64Url.replace('-', '+').replace('_', '/');
-
-    return JSON.parse(window.atob(base64));
-};
 
 export default new Auth();

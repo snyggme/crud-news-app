@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import EditArticleProto from './EditArticleProto';
 import NoMatch from './NoMatch';
+import ErrorMessage from './ErrorMessage';
 import { isNewsIdValid } from '../utils/other';
 
 class UpdateArticle extends Component {
@@ -24,7 +25,7 @@ class UpdateArticle extends Component {
 		this.props.history.push('/news');
 	}
 	render() {
-		const { feeds } = this.props.news;
+		const { feeds, error } = this.props.news;
 		const { newsId } = this.props.match.params;
 
 		if(!isNewsIdValid(newsId, feeds))
@@ -35,13 +36,15 @@ class UpdateArticle extends Component {
 		const { title, content } = feed;
 
 		return (
-			<EditArticleProto 
-				title={title} 
-				content={content} 
-				btnText='Save'
-				handleEdit={this.handleSave}
-				handleCancel={this.handleCancel}
-			/>
+			<div>
+				<EditArticleProto 
+					title={title} 
+					content={content} 
+					btnText='Save'
+					handleEdit={this.handleSave}
+					handleCancel={this.handleCancel}
+				/>
+			</div>
 		)
 	}
 }

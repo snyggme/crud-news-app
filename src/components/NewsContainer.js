@@ -7,6 +7,7 @@ import CreateArticle from './CreateArticle';
 import SearchedArticles from './SearchedArticles';
 import NoMatch from './NoMatch';
 import ErrorMessage from './ErrorMessage';
+import PrivateRoute from './PrivateRoute';
 
 class NewsContainer extends Component {
 	componentDidMount() {
@@ -20,15 +21,11 @@ class NewsContainer extends Component {
 
 		return (
 			<Switch>
-				<Route path='/news/:newsId/edit' render={ renderProps =>
-                    <UpdateArticle {...this.props} {...renderProps }/>
-                } /> 
+				<PrivateRoute path='/news/:newsId/edit' {...this.props} component={UpdateArticle} /> 
+                <PrivateRoute path='/news/create' {...this.props} component={CreateArticle} />
                 <Route path='/news/search' render={ renderProps =>
                     <SearchedArticles {...this.props} {...renderProps }/>
                 } />
-                <Route path='/news/create' render={ renderProps =>
-                    <CreateArticle {...this.props} {...renderProps }/>
-                } />       
                 <Route path='/news/:newsId' render={ renderProps =>
                     <SingleFeed {...this.props} {...renderProps }/>
                 } />          

@@ -7,6 +7,7 @@ import NewsContainer from './components/NewsContainer';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
+import LoginForm from './components/LoginForm';
 
 import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
 import { googleLogin, googleLogout } from './actions/AuthAction';
@@ -24,7 +25,10 @@ class App extends Component {
                 <Switch>
                     <Route exact path='/' render={ renderProps =>
                         <Main {...this.props} {...renderProps }/>
-                    } />             
+                    }/>             
+                    <Route path='/signup' render={ renderProps =>
+                        <LoginForm {...this.props} {...renderProps }/>
+                    } />
                     <Route path='/news' render={ renderProps =>
                         <NewsContainer {...this.props} {...renderProps }/>
                     }/>
