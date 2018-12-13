@@ -4,12 +4,13 @@ import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	const { isSigned } = rest.auth;
-	
+
 	return (
-	    <Route
+	    <Route 
+	    	{...rest}
 	      	render={props =>
 	        	isSigned
-		        	? <Component {...rest} {...props} />
+		        	? <Component  {...rest} {...props} />
 		        	: <Redirect
 		            		to={{
 		              			pathname: "/news"

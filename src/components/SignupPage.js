@@ -9,12 +9,19 @@ class SignUp extends Component {
 		this.verifyCallback = this.verifyCallback.bind(this);
 	}
 	verifyCallback(response) {
-		console.log(response);
+		this.props.verifyCaptcha(response);
 	}
 	render() {
 		return (
 			<div>
-			   	<UserForm text='Sign up' />
+			   	<UserForm 
+			   		text='Sign up'
+			   		googleLogin={this.props.googleLogin}
+			   		history={this.props.history}
+			   		captchaVerified={this.props.auth.captchaVerified}
+			   		captchaResponse={this.props.auth.captchaResponse}
+			   		createUser={this.props.createUser}
+			   	/>
 			    <Recaptcha
 					className='recaptcha'
 			        sitekey="6LcP-4AUAAAAAI9IWY23igRLZCk3l1MCYD2ATg0n"

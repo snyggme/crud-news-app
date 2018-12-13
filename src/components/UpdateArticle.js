@@ -27,7 +27,7 @@ class UpdateArticle extends Component {
 	render() {
 		const { feeds, error } = this.props.news;
 		const { newsId } = this.props.match.params;
-
+		
 		if(!isNewsIdValid(newsId, feeds))
 			return <NoMatch />
 

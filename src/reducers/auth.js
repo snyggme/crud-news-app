@@ -2,11 +2,14 @@ import {
 	GOOGLE_LOGIN_REQUEST,
     GOOGLE_LOGIN_SUCCESS,
     GOOGLE_LOGIN_FAIL,
-    GOOGLE_LOGOUT
+    GOOGLE_LOGOUT,
+    CAPTCHA_VERIFIED
 } from '../actions/AuthAction';
 import auth from '../utils/auth';
 
 const initialState = {
+	captchaVerified: false,
+	captchaResponse: '',
 	isSigning: false,
 	isSigned: auth.isSigned(),
 	error: ''
@@ -35,8 +38,15 @@ export const authReducer = (state = initialState, action) => {
 		case GOOGLE_LOGOUT:
 			return {
 				...state,
+				captchaVerified: false,
 				isSigning: false,
 				isSigned: auth.isSigned()
+			}
+		case CAPTCHA_VERIFIED:
+			return {
+				...state,
+				captchaResponse: action.payload,
+				captchaVerified: true
 			}
  		default:
 			return state;
