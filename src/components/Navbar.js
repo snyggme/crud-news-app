@@ -34,7 +34,7 @@ const Navbar = (props) => {
 					feeds={props.news.feeds}
 					setSearchedFeeds={props.setSearchedFeeds}
 					history={props.history} />
-				<SignButton logout={props.logout} />	
+				<SignButton logout={props.logout} auth={props.auth} />	
 			</ul>
 		</nav>
 	)	

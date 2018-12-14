@@ -4,11 +4,13 @@ import auth from '../utils/auth';
 
 const SignButton = (props) => {
 	const signed = auth.isSigned();
+	const { isSigning } = props.auth;
 
 	return (
 		<li className='flex-login'>
-			{ 
-				signed 
+			{  isSigning
+				? 'Loading...' 
+				: signed 
 					? (
 						<div>
 							{`${auth.getUsername()} | `} 
@@ -16,6 +18,7 @@ const SignButton = (props) => {
 						</div>
 					)
 					: <Link to='/login'>Login</Link>
+				
 			}
 		</li>	
 	)

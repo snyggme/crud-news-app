@@ -13,6 +13,11 @@ class SignUp extends Component {
 		this.props.verifyCaptcha(response);
 	}
 	render() {
+		const { isSigning } = this.props.auth;
+
+		if (isSigning)
+			return <div className='loading' />
+
 		return (
 			<div>
 			   	<UserForm 

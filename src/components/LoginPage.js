@@ -4,6 +4,11 @@ import UserForm from './UserForm';
 
 class LoginPage extends Component {
 	render() {
+		const { isSigning } = this.props.auth;
+
+		if (isSigning)
+			return <div className='loading' />
+		
 		return (
 		    <div>
 		    	<UserForm 
