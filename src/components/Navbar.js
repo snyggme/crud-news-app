@@ -7,8 +7,7 @@ import logo from '../assets/logo.svg';
 
 const Navbar = (props) => {
 	const signed = auth.isSigned();
-	// const signing = this.props.auth.isSigning;
-
+	
 	return (
 		<nav className='flex-nav'>
 			<ul>
@@ -35,7 +34,7 @@ const Navbar = (props) => {
 					feeds={props.news.feeds}
 					setSearchedFeeds={props.setSearchedFeeds}
 					history={props.history} />
-				<SignButton googleLogout={props.googleLogout} />	
+				<SignButton logout={props.logout} />	
 			</ul>
 		</nav>
 	)	

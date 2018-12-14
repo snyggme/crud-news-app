@@ -12,7 +12,7 @@ const SignButton = (props) => {
 					? (
 						<div>
 							{`${auth.getUsername()} | `} 
-							<span onClick={props.googleLogout}>Logout</span>
+							<span onClick={props.logout}>Logout</span>
 						</div>
 					)
 					: <Link to='/login'>Login</Link>

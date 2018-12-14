@@ -4,6 +4,11 @@ class UserForm extends Component {
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			textTooltip: '',
+			showTooltip: false
+		}
+
 		this.inputName = React.createRef();
 		this.inputPass = React.createRef();
 
@@ -15,7 +20,7 @@ class UserForm extends Component {
 
 		this.props.history.push('/');
 	}
-	handleSubmit(e) {
+	async handleSubmit(e) {
 		e.preventDefault();
 
 		const user = {
@@ -23,21 +28,24 @@ class UserForm extends Component {
 			password: this.inputPass.current.value
 		}
 
-		if (this.validate(user)) {
-			const { captchaResponse } = this.props;
 
-			this.props.createUser({ 
+		if (this.validate(user)) {
+			const { captcha: { response } } = this.props;
+
+			await this.props.createUser({ 
 				...user, 
-				'g-recaptcha-response': captchaResponse
+				'g-recaptcha-response': response
 			})
+
+			this.props.history.push('/');
 		} else {
 			console.log('submit error');
 		}
 	}
 	validate({ username, password }) {
-		const { captchaVerified } = this.props;
+		const { captcha: { verified } } = this.props;
 
-		if (!captchaVerified)
+		if (!verified)
 			return false;
 		
 		if (password.length < 6)

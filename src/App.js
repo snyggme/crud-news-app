@@ -11,7 +11,7 @@ import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
 
 import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
-import { googleLogin, googleLogout, verifyCaptcha, createUser } from './actions/AuthAction';
+import { googleLogin, logout, verifyCaptcha, createUser } from './actions/AuthAction';
 import { setSearchedFeeds } from './actions/SearchAction';
 import auth from './utils/auth';
 
@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getFeeds: () => dispatch(getFeeds()),
         googleLogin: () => dispatch(googleLogin()),
-        googleLogout: () => dispatch(googleLogout()),
+        logout: () => dispatch(logout()),
         verifyCaptcha: (r) => dispatch(verifyCaptcha(r)),
         createUser: (user) => dispatch(createUser(user)),
         createFeed: (feed) => dispatch(createFeed(feed)),

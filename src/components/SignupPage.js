@@ -18,8 +18,7 @@ class SignUp extends Component {
 			   		text='Sign up'
 			   		googleLogin={this.props.googleLogin}
 			   		history={this.props.history}
-			   		captchaVerified={this.props.auth.captchaVerified}
-			   		captchaResponse={this.props.auth.captchaResponse}
+			   		captcha={this.props.auth.captcha}
 			   		createUser={this.props.createUser}
 			   	/>
 			    <Recaptcha

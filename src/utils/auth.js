@@ -16,7 +16,7 @@ class Auth {
                 .then(_onInit, _onError)
         })
     }
-    signIn() {
+    googleSignin() {
         return new Promise((resolve, reject) => {
             const auth2 = window.gapi.auth2.getAuthInstance();
 
@@ -37,7 +37,21 @@ class Auth {
                 })
         })
     }
-    signOut() {
+    signup(user) {
+        this.signin(user);
+    }
+    signin({ token, username }){
+        const _id = this.parseJWT(token).id;
+
+        const user = {
+            username,
+            _id,
+            backendToken: token
+        };
+
+        sessionStorage.setItem('user', JSON.stringify(user));
+    }
+    signout() {
         const auth2 = window.gapi.auth2.getAuthInstance()
 
         auth2.signOut();

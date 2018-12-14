@@ -8,10 +8,6 @@ import {
     DELETE_FEED_SUCCESS,
     DELETE_FEED_FAIL
 } from '../actions/FeedsAction';
-import {
-    GOOGLE_LOGIN_SUCCESS,
-    GOOGLE_LOGIN_FAIL
-} from '../actions/AuthAction';
 import auth from './auth';
 
 export let cachedFeeds = false;
@@ -137,30 +133,33 @@ export const httpDeleteFeed = async (dispatch, id) => {
     }
 }
 
-export const getBackendToken = async (dispatch, data) => {  
+export const getBackendToken = async (dispatch, body, endpoint, success, fail) => {  
     try {
-        const response = await fetch(`${API_ROOT}/auth/google`, {  
+        const response = await fetch(`${API_ROOT}${endpoint}`, {  
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ token: data })
+            body: JSON.stringify(body)
         });
 
         if (response.ok) {
             const json = await response.json();
 
             dispatch({
-                type: GOOGLE_LOGIN_SUCCESS,
-                payload: json.token
+                type: success,
+                payload: {
+                    token: json.token,
+                    username: body.username
+                }
             })
         } else {
             throw new Error(response.status);            
         }
     } catch (e) {
         dispatch({
-            type: GOOGLE_LOGIN_FAIL,
+            type: fail,
             error: true,
             payload: new Error(e).message
         })
