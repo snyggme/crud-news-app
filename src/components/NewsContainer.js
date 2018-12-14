@@ -6,7 +6,6 @@ import UpdateArticle from './UpdateArticle';
 import CreateArticle from './CreateArticle';
 import SearchedArticles from './SearchedArticles';
 import NoMatch from './NoMatch';
-import ErrorMessage from './ErrorMessage';
 import PrivateRoute from './PrivateRoute';
 
 class NewsContainer extends Component {

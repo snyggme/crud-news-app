@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserForm from './UserForm';
+import { Link } from 'react-router-dom';
 import Recaptcha from 'react-recaptcha';
  
 class SignUp extends Component {
@@ -20,6 +21,7 @@ class SignUp extends Component {
 			   		history={this.props.history}
 			   		captcha={this.props.auth.captcha}
 			   		createUser={this.props.createUser}
+			   		withCaptcha={true}
 			   	/>
 			    <Recaptcha
 					className='recaptcha'
@@ -27,6 +29,10 @@ class SignUp extends Component {
 			        render="explicit"
 			        verifyCallback={this.verifyCallback}
 			    />
+			    <p className='signup-q'>
+			    	Already have an account? Login
+			    	<Link to='/login'> here</Link>
+			    </p>
 			</div>
 		)	
 	}

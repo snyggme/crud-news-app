@@ -69,7 +69,7 @@ export const createUser = (user) => {
 	}
 }
 
-export const SigninUser = (user) => {
+export const signinUser = (user) => {
 	return async dispatch => {
 		dispatch({
 			type: SIGNIN_USER_REQUEST

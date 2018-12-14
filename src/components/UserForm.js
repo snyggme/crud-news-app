@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import auth from '../utils/auth';
 
 class UserForm extends Component {
 	constructor(props) {
@@ -23,35 +24,58 @@ class UserForm extends Component {
 	async handleSubmit(e) {
 		e.preventDefault();
 
+		const { withCaptcha } = this.props;
+
 		const user = {
 			username: this.inputName.current.value,
 			password: this.inputPass.current.value
 		}
 
+		const vresults = this.validate(user);
 
-		if (this.validate(user)) {
-			const { captcha: { response } } = this.props;
+		if (withCaptcha) {
+			if (vresults.isvalid) {
+				const { captcha: { response } } = this.props;
 
-			await this.props.createUser({ 
-				...user, 
-				'g-recaptcha-response': response
-			})
-
-			this.props.history.push('/');
+				await this.props.createUser({ 
+					...user, 
+					'g-recaptcha-response': response
+				})
+			} else {
+				console.log(vresults.error);
+			}
 		} else {
-			console.log('submit error');
+			if (vresults.isvalid) {
+				await this.props.signinUser(user)
+			} else {
+				console.log(vresults.error);
+			}
 		}
+
+		if (auth.isSigned())
+			this.props.history.push('/');
+		else 
+			console.log('auth error')
 	}
 	validate({ username, password }) {
-		const { captcha: { verified } } = this.props;
+		const { withCaptcha, captcha: { verified } } = this.props;
 
-		if (!verified)
-			return false;
+		if (!verified && withCaptcha)
+			return {
+				isvalid: false,
+				error: 'reCAPTCHA is not verified'
+			};
 		
 		if (password.length < 6)
-			return false;
+			return {
+				isvalid: false,
+				error: 'password need to be more than 6 characters'
+			};
 
-		return true;
+		return {
+			isvalid: true,
+			error: ''
+		};
 	}
 	render() {
 		return (

@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserForm from './UserForm';
-import auth from '../utils/auth';
 
-class LoginForm extends Component {
-	constructor(props) {
-		super(props);
-
-	}
+class LoginPage extends Component {
 	render() {
 		return (
 		    <div>
@@ -15,6 +10,9 @@ class LoginForm extends Component {
 		    		text='Login' 
 		    		googleLogin={this.props.googleLogin}
 		    		history={this.props.history}
+		    		captcha={this.props.auth}
+		    		withCaptcha={false}
+		    		signinUser={this.props.signinUser}
 		    	/>
 			    <p className='signup-q'>
 			    	Don't have an account? Sign up
@@ -25,4 +23,4 @@ class LoginForm extends Component {
 	}
 }
 
-export default LoginForm;
+export default LoginPage;
