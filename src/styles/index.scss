@@ -12,6 +12,10 @@ body {
 
 .flex-nav {
 	box-shadow: 5px 5px 10px 0 rgba(46,61,73,0.05);
+	position: sticky;
+	top: 0;
+	background: white;
+	z-index: 1000;
 }
 
 .flex-nav ul {
