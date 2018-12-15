@@ -33,7 +33,6 @@ export const httpGetFeeds = async (dispatch) => {
     } catch (e) {
         dispatch({
             type: GET_FEEDS_FAIL,
-            error: true,
             payload: new Error(e).message
         })
     }
@@ -66,7 +65,6 @@ export const httpPostFeed = async (dispatch, feed) => {
     } catch (e) {
         dispatch({
             type: POST_FEED_FAIL,
-            error: true,
             payload: new Error(e).message
         })
     }
@@ -97,7 +95,6 @@ export const httpPutFeed = async (dispatch, feed, id) => {
     } catch (e) {
         dispatch({
             type: PUT_FEED_FAIL,
-            error: true,
             payload: new Error(e).message
         })
     }
@@ -127,7 +124,6 @@ export const httpDeleteFeed = async (dispatch, id) => {
     } catch (e) {
         dispatch({
             type: DELETE_FEED_FAIL,
-            error: true,
             payload: new Error(e).message
         })
     }
@@ -160,7 +156,6 @@ export const getBackendToken = async (dispatch, body, endpoint, success, fail) =
     } catch (e) {
         dispatch({
             type: fail,
-            error: true,
             payload: new Error(e).message
         })
     }

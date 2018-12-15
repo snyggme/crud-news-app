@@ -20,7 +20,7 @@ const initialState = {
 	},
 	isSigning: false,
 	isSigned: auth.isSigned(),
-	error: ''
+	error: null
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -46,11 +46,13 @@ export const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isSigning: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}
 		case LOGOUT:
 			return {
-				error: '',
+				error: null,
 				captcha: {
 					response: '',
 					verified: false
@@ -89,12 +91,10 @@ export const authReducer = (state = initialState, action) => {
 		case POST_USER_FAIL:
 			return {
 				...state,
-				captcha: {
-					response: '',
-					verified: false
-				},
 				isSigning: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}
 		case SIGNIN_USER_REQUEST:
 			return {
@@ -116,7 +116,9 @@ export const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isSigning: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}
  		default:
 			return state;

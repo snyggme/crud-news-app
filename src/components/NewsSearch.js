@@ -33,11 +33,7 @@ class NewsSearch extends Component {
 
 		const { value } = this.input.current;
 
-		const feeds = this.props.feeds.filter(({ title }) => 
-			this.checkEquality(title, value)
-		)
-		
-		this.props.setSearchedFeeds(feeds);
+		this.props.searchFeeds(value);
 		this.props.history.push('/news/search');
 
 		e.target.reset();
@@ -47,16 +43,7 @@ class NewsSearch extends Component {
 			inputWidth: '0px'
 		})
 	}
-	checkEquality(str, search) {
-		var arr = search.split(' ');
-		
-		for(let i = 0; i < arr.length; i++) {
-			if (str.match(arr[i]) !== null)
-				return true
-		}
 
-		return false
-	}
 	render() {
 		const { searchBasis, inputWidth } = this.state;
 		const { className } = this.props;

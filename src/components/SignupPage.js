@@ -19,7 +19,7 @@ class SignUp extends Component {
 			return <div className='loading' />
 
 		return (
-			<div>
+			<div className='login-container'>
 			   	<UserForm 
 			   		text='Sign up'
 			   		googleLogin={this.props.googleLogin}

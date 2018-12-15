@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import NewsSearch from './NewsSearch';
 import SignButton from './SignButton';
-import auth from '../utils/auth';
 import logo from '../assets/logo.svg';
 
+import { logout } from '../actions/AuthAction';
+import { searchFeeds } from '../actions/SearchAction';
+
 const Navbar = (props) => {
-	const signed = auth.isSigned();
+	const { isSigned } = props.auth;
 
 	return (
 		<nav className='flex-nav'>
@@ -17,22 +21,21 @@ const Navbar = (props) => {
 						Super Awesome News
 					</Link>
 				</li>
-				<li className='flex-news'>
-					<Link to='/news'>
-						News
-					</Link>
-				</li>
-				{ signed &&
+				{ isSigned &&
 					<li className='flex-create'>
 						<Link to='/news/create'>
 							Create
 						</Link>
 					</li>	
 				}
+				<li className='flex-news'>
+					<Link to='/news'>
+						News
+					</Link>
+				</li>
 				<NewsSearch 
 					className='flex-search' 
-					feeds={props.news.feeds}
-					setSearchedFeeds={props.setSearchedFeeds}
+					searchFeeds={props.searchFeeds}
 					history={props.history} />
 				<SignButton 
 					logout={props.logout} 
@@ -43,4 +46,20 @@ const Navbar = (props) => {
 	)	
 }
 
-export default Navbar;
+const mapStateToProps = store => {
+    return {
+        auth: store.auth 
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => dispatch(logout()),
+        searchFeeds: (feeds) => dispatch(searchFeeds(feeds))
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Navbar);

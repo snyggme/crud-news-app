@@ -349,7 +349,7 @@ button.btn {
 }
 
 article.single-feed-container {
-	min-height: 83vh;
+	min-height: 87vh;
 	max-width: 800px;
 	margin: 0 auto;
 	font-size: 25px;
@@ -420,7 +420,7 @@ article.single-feed-container {
 }
 
 section.editor-container {
-	min-height: 85vh;
+	min-height: 87vh;
 }
 
 article.editor {
@@ -528,6 +528,10 @@ article.editor {
 	}
 }
 
+div.login-container {
+	height: 77vh;
+}
+
 p.signup-q {
 	max-width: 250px;
 	margin: 20px auto;
@@ -546,7 +550,7 @@ p.signup-q {
 
 footer {
 	text-align: center;
-	
+
 	p {
 		margin-bottom: 15px;
 		margin-top: 15px;

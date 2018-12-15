@@ -17,7 +17,7 @@ import {
 const initialState = {
 	feeds: [],
 	isLoading: true,
-	error: ''
+	error: null
 };
 
 export const feedsReducer = (state = initialState, action) => {
@@ -31,18 +31,20 @@ export const feedsReducer = (state = initialState, action) => {
 			return {
 				feeds: action.payload,
 				isLoading: false,
-				error: ''
+				error: null
 			}
 		case GET_FEEDS_FAIL:
 			return {
 				...state,
 				isLoading: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}
 		case PUT_FEED_REQUEST:
 			return {
 				...state,
-				error: '',
+				error: null,
 				isLoading: true
 			}
 		case PUT_FEED_SUCCESS:
@@ -51,7 +53,7 @@ export const feedsReducer = (state = initialState, action) => {
 			const i = state.feeds.findIndex(feed => feed._id === _id)
 
 			return {
-				error: '',
+				error: null,
 				isLoading: false,
 				feeds: [
 					...state.feeds.slice(0, i),
@@ -63,12 +65,14 @@ export const feedsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}
 		case DELETE_FEED_REQUEST:
 			return {
 				...state,
-				error: '',
+				error: null,
 				isLoading: true
 			}
 		case DELETE_FEED_SUCCESS:
@@ -77,7 +81,7 @@ export const feedsReducer = (state = initialState, action) => {
 			const index = state.feeds.findIndex(feed => feed._id === id)
 			
 			return {
-				error: '',
+				error: null,
 				isLoading: false,
 				feeds: [
 					...state.feeds.slice(0, index),
@@ -88,17 +92,19 @@ export const feedsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}	
 		case POST_FEED_REQUEST:
 			return {
 				...state,
-				error: '',
+				error: null,
 				isLoading: true
 			}
 		case POST_FEED_SUCCESS:
 			return {
-				error: '',
+				error: null,
 				isLoading: false,
 				feeds: [
 					...state.feeds,
@@ -109,7 +115,9 @@ export const feedsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: false,
-				error: action.payload
+				error: {
+					msg: action.payload
+				}
 			}		
  		default:
 			return state;

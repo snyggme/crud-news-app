@@ -10,7 +10,7 @@ class LoginPage extends Component {
 			return <div className='loading' />
 		
 		return (
-		    <div>
+		    <div className='login-container'>
 		    	<UserForm 
 		    		text='Login' 
 		    		googleLogin={this.props.googleLogin}

@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const SignButton = (props) => {
-	const signed = auth.isSigned();
-	const { isSigning } = props.auth;
+	const { isSigning, isSigned } = props.auth;
 
 	return (
 		<li className='flex-login'>
 			{  isSigning
 				? 'Loading...' 
-				: signed 
+				: isSigned 
 					? (
 						<div>
 							{`${auth.getUsername()} | `} 
@@ -18,7 +17,6 @@ const SignButton = (props) => {
 						</div>
 					)
 					: <Link to='/login'>Login</Link>
-				
 			}
 		</li>	
 	)

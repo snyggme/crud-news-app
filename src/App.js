@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+
+import LoginContainer from './containers/LoginContainer';
+import SignupContainer from './containers/SignupContainer';
+import NewsContainer from './containers/NewsContainer';
+import MainContainer from './containers/MainContainer';
 
 import Navbar from './components/Navbar';
-import NewsContainer from './components/NewsContainer';
-import Main from './components/Main';
 import Footer from './components/Footer';
 import NoMatch from './components/NoMatch';
-import LoginPage from './components/LoginPage';
-import SignupPage from './components/SignupPage';
 
-import { getFeeds, createFeed, updateFeed, deleteFeed } from './actions/FeedsAction';
-import { googleLogin, logout, verifyCaptcha, createUser, signinUser } from './actions/AuthAction';
-import { setSearchedFeeds } from './actions/SearchAction';
 import auth from './utils/auth';
 
 class App extends Component {
@@ -22,20 +19,12 @@ class App extends Component {
     render() {
         return (
             <div>
-            	<Navbar {...this.props} />
+            	<Navbar history={this.props.history} />
                 <Switch>
-                    <Route exact path='/' render={ renderProps =>
-                        <Main {...this.props} {...renderProps }/>
-                    }/>             
-                    <Route path='/login' render={ renderProps =>
-                        <LoginPage {...this.props} {...renderProps }/>
-                    } />
-                    <Route path='/signup' render={ renderProps =>
-                        <SignupPage {...this.props} {...renderProps }/>
-                    } />
-                    <Route path='/news' render={ renderProps =>
-                        <NewsContainer {...this.props} {...renderProps }/>
-                    }/>
+                    <Route exact path='/' component={MainContainer} />             
+                    <Route path='/login' component={LoginContainer} />
+                    <Route path='/signup' component={SignupContainer} />
+                    <Route path='/news' component={NewsContainer} />
                     <Route component={NoMatch} />
                 </Switch>
                 <Footer />
@@ -44,30 +33,4 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = store => {
-    return {
-        news: store.news,
-        auth: store.auth,
-        search: store.search
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        getFeeds: () => dispatch(getFeeds()),
-        googleLogin: () => dispatch(googleLogin()),
-        logout: () => dispatch(logout()),
-        verifyCaptcha: (r) => dispatch(verifyCaptcha(r)),
-        createUser: (user) => dispatch(createUser(user)),
-        signinUser: (user) => dispatch(signinUser(user)),
-        createFeed: (feed) => dispatch(createFeed(feed)),
-        updateFeed: (feed, id) => dispatch(updateFeed(feed, id)),
-        deleteFeed: (id) => dispatch(deleteFeed(id)),
-        setSearchedFeeds: (feeds) => dispatch(setSearchedFeeds(feeds))
-    }
-}
-
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App));
+export default withRouter(App);

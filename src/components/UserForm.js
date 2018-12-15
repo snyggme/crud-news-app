@@ -60,18 +60,20 @@ class UserForm extends Component {
 	validate({ username, password }) {
 		const { withCaptcha, captcha: { verified } } = this.props;
 
-		if (!verified && withCaptcha)
-			return {
-				isvalid: false,
-				error: 'reCAPTCHA is not verified'
-			};
+		if (withCaptcha) {
+			if (!verified)
+				return {
+					isvalid: false,
+					error: 'reCAPTCHA is not verified'
+				};
+			
+			if (password.length < 6 )
+				return {
+					isvalid: false,
+					error: 'password need to be more than 6 characters'
+				};
+		}
 		
-		if (password.length < 6)
-			return {
-				isvalid: false,
-				error: 'password need to be more than 6 characters'
-			};
-
 		return {
 			isvalid: true,
 			error: ''
