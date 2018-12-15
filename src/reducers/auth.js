@@ -39,7 +39,7 @@ export const authReducer = (state = initialState, action) => {
 					response: '',
 					verified: false
 				},
-				isSigned: auth.isSigned(),
+				isSigned: true,
 				isSigning: false
 			};
 		case GOOGLE_LOGIN_FAIL:
@@ -58,7 +58,7 @@ export const authReducer = (state = initialState, action) => {
 					verified: false
 				},
 				isSigning: false,
-				isSigned: auth.isSigned()
+				isSigned: false
 			}
 		case CAPTCHA_VERIFIED:
 			return {
@@ -85,7 +85,7 @@ export const authReducer = (state = initialState, action) => {
 					response: '',
 					verified: false
 				},
-				isSigned: auth.isSigned(),
+				isSigned: true,
 				isSigning: false
 			};
 		case POST_USER_FAIL:
@@ -109,7 +109,7 @@ export const authReducer = (state = initialState, action) => {
 			
 			return {
 				...state,
-				isSigned: auth.isSigned(),
+				isSigned: true,
 				isSigning: false
 			};
 		case SIGNIN_USER_FAIL:
